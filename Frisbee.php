@@ -73,7 +73,7 @@
                                 </div>
                             </div>
 
-                            <button type="submit">Calculate</button>
+                            <button type="submit" name="submit">Calculate</button>
 
                         </form>
                     </div>
@@ -83,24 +83,69 @@
 <?php
 
 //player name
-$player = $_POST["player"];
+$player = null;
+if(isset($_POST["player"])) {
+    $player = $_POST["player"];
+}
+
+
 
 //throwing stats
-$throws = (float) $_POST["throws"];
-$throwYards = (float) $_POST["throwYards"];
-$throwScores = (float) $_POST["throwScores"];
-$turnovers = (float) $_POST["turnovers"];
+$throws = null;
+if(isset($_POST["throws"])) {
+    $throws = (float) $_POST["throws"];
+}
+
+$throwYards = null;
+if(isset($_POST["throwYards"])) {
+    $throwYards = (float) $_POST["throwYards"];
+}
+
+$throwScores = null;
+if(isset($_POST["throwScores"])) {
+    $throwScores = (float) $_POST["throwScores"];
+}
+
+$turnovers = null;
+if(isset($_POST["turnovers"])) {
+    $turnovers = (float) $_POST["turnovers"];
+}
+
 
 
 //catching stats
-$catches = (float) $_POST["catches"];
-$catchYards = (float) $_POST["catchYards"];
-$catchScores = (float) $_POST["catchScores"];
-$drops = (float) $_POST["drops"];
+$catches = null;
+if(isset($_POST["catches"])) {
+    $catches = (float) $_POST["catches"];
+}
+
+$catchYards = null;
+if(isset($_POST["catchYards"])) {
+    $catchYards = (float) $_POST["catchYards"];
+}
+
+$catchScores = null;
+if(isset($_POST["catchScores"])) {
+    $catchScores = (float) $_POST["catchScores"];
+}
+
+$drops = null;
+if(isset($_POST["drops"])) {
+    $drops = (float) $_POST["drops"];
+}
+
+
 
 //defense stats
-$forcedTurns = (float) $_POST["forcedTurns"];
-$scoresAllowed = (float) $_POST["scoresAllowed"];
+$forcedTurns = null;
+if(isset($_POST["forcedTurns"])) {
+    $forcedTurns = (float) $_POST["forcedTurns"];
+}
+
+$scoresAllowed = null;
+if(isset($_POST["scoresAllowed"])) {
+    $scoresAllowed = (float) $_POST["scoresAllowed"];
+}
 
 
 //throwing stats value
@@ -146,7 +191,8 @@ $totalDefensivePoints = ($forcedTurnsPoints + $scoresAllowedPoints);
 
 $totalPoints = ($totalThrowPoints + $totalCatchPoints + $totalDefensivePoints);
 
-if(isset($_POST)) {
+
+if(isset($_POST["submit"])) {
     echo($player . ": " . $totalPoints . " Points");
 }
 

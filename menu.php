@@ -21,7 +21,7 @@
                     <label for="patty3">Triple Krabby Patty - $3.00</label>
                     <input type="number" name="patty3" placeholder="0">
                 </div>
-                <button type="submit">Checkout</button>
+                <button type="submit" name="submit">Checkout</button>
 
             </form>
         
@@ -33,10 +33,21 @@
 //how many of each item
 //cost of each item
 //total cost
+$patty1Quant = null;
+if(isset($_POST["patty1"])) {
+    $patty1Quant = (float) $_POST["patty1"];
+}
 
-$patty1Quant = (float) $_POST["patty1"];
-$patty2Quant = (float) $_POST["patty2"];
-$patty3Quant = (float) $_POST["patty3"];
+$patty2Quant = null;
+if(isset($_POST["patty2"])) {
+    $patty2Quant = (float) $_POST["patty2"];
+}
+
+$patty3Quant = null;
+if(isset($_POST["patty3"])) {
+    $patty3Quant = (float) $_POST["patty3"];
+}
+
 
 $patty1Cost = 1.25;
 $patty2Cost = 2.00;
@@ -51,7 +62,7 @@ $patty3Total = $patty3Quant * $patty3Cost;
 
 $total = ($patty1Total + $patty2Total + $patty3Total);
 
-if(isset($_POST)) {
+if(isset($_POST["submit"])) {
     echo("<br>Order Summary:<br>");
 
     if(isset($_POST["patty1"])){
